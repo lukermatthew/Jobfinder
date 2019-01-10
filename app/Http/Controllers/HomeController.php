@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Jobcategory;
 use App\Post;
+use App\Job;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +23,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        
-        return view('welcome',compact('categories','posts'));
+       
+        $jobcategories = Jobcategory::all();
+        $posts = Post::all();
+        $jobs = Job::all();
+        $jobs_count = Job::latest()->count();
+        $jobcategories_count = Job::latest()->count();
+        return view('welcome',compact('posts','jobs','jobcategories','jobtypecategories','jobs_count','jobcategories_count'));
     }
 }

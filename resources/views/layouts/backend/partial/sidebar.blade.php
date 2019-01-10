@@ -3,7 +3,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{asset('backend/images/user.png') }}" width="48" height="48" alt="User" />
+                    <img src="{{ Storage::disk('public')->url('profile/'.Auth::user()->image) }}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong>{{ Auth::user()->name }}</strong></div>
@@ -46,6 +46,226 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+
+                
+                <li>
+                        <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                            <i class="material-icons">work</i>
+                            <span>JOB MANAGEMENT</span>
+                        </a>
+
+
+                        <ul class="ml-menu" style="display: none;">
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                    <span>Manage Job</span>
+                                </a>
+                                <ul class="ml-menu" style="display: none;">
+
+
+
+
+
+                   
+                              <li class="{{ Request::is('admin/job') ? 'active' : '' }}">
+                        <a href="{{ Auth::user()->role->id == 1 ? route('admin.job.index') : route('admin.job.index')}}">
+                        
+                        <span>Posted Job</span>
+                        </a>
+                    </li>
+
+                    
+                    <li class="{{ Request::is('admin/appjob') ? 'active' : '' }}">
+                        <a href="{{ Auth::user()->role->id == 1 ? route('admin.appjob.index') : route('admin.appjob.index')}}">
+                        
+                        <span>Job Application</span>
+                        </a>
+                    </li>
+
+
+
+
+
+
+
+
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                    <span>Manage Client</span>
+                                </a>
+                                <ul class="ml-menu">
+                               
+                                        <li class="{{ Request::is('admin/client*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.client.index') }}">
+                                        
+                                            <span>All Client</span>
+                                        </a>
+                                    </li>
+
+                                   
+                                </ul>
+                            </li>
+
+
+
+
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                    <span>Manage Applicant</span>
+                                </a>
+                                <ul class="ml-menu">
+                               
+                                        <li>
+                                        <a href="{{ route('admin.applicant.index') }}">
+                                        
+                                            <span>All Applicant</span>
+                                        </a>
+                                    </li>
+
+                                   
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                                    <span>Job Maintenance</span>
+                                </a>
+                                <ul class="ml-menu">
+                               
+                                        <li class="{{ Request::is('admin/jobcategory*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.jobcategory.index') }}">
+                                        
+                                            <span>Job Category</span>
+                                        </a>
+                                    </li>
+
+                                    <li class="{{ Request::is('admin/jobtypecategory*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.jobtypecategory.index') }}">
+                                        
+                                            <span>Job Type</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            
+                        </ul>
+                    </li>
+
+
+                
+                  
+
+              
+              
+
+
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle waves-effect waves-block">
+                            <i class="material-icons">assignment</i>
+                            <span>POST MANAGEMENT</span>
+                        </a>
+                        <ul class="ml-menu" style="display: none;">
+                              <li class="{{ Request::is('admin/post') ? 'active' : '' }}">
+                        <a href="{{ Auth::user()->role->id == 1 ? route('admin.post.index') : route('admin.post.index')}}">
+                        
+                        <span>Post</span>
+                        </a>
+                    </li>
+                    <li class="{{ Request::is('admin/category*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.category.index') }}">
+                       
+                        <span>Category</span>
+                    </a>
+                </li>
+
+                <li class="{{ Request::is('admin/tag*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.tag.index') }}">
+                       
+                        <span>Tag</span>
+                    </a>
+                </li>
+
+                 <li class="{{ Request::is('admin/favorite') ? 'active' : '' }}">
+                    <a href="{{ route('admin.favorite.index') }}">
+                       
+                        <span>Favorite Posts</span>
+                    </a>
+                </li>
+
+              
+
+             
+                        </ul>
+                    </li>
+
+
+                    <li class="{{ Request::is('admin/authors') ? 'active' : '' }}">
+                    <a href="{{ route('admin.author.index') }}">
+                        <i class="material-icons">account_circle</i>
+                        <span>Authors</span>
+                    </a>
+                </li>
+
+                    <li class="{{ Request::is('admin/subscriber') ? 'active' : '' }}">
+                    <a href="{{ route('admin.subscriber.index') }}">
+                        <i class="material-icons">subscriptions</i>
+                        <span>Subscribers</span>
+                    </a>
+                </li>
+
+                
+
+
+
+                 
+
+                 <li class="{{ Request::is('admin/settings') ? 'active' : '' }}">
+                        <a href="{{ Auth::user()->role->id == 1 ? route('admin.settings') : route('admin.settings')}}">
+                        <i class="material-icons">settings</i>
+                        <span>Settings</span>
+                        </a>
+                    </li>
+
+                @endif
+
+                   @if(Request::is('client*'))
+                <li class="{{ Request::is('client/dashboard') ? 'active' : '' }}">
+                    <a href="{{ route('client.dashboard') }}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="{{ Request::is('client/job') ? 'active' : '' }}">
+                    <a href="{{ route('client.job.index') }}">
+                        <i class="material-icons">work</i>
+                        <span>Job</span>
+                    </a>
+                </li>
+
+                 <li class="{{ Request::is('client/post') ? 'active' : '' }}">
+                    <a href="{{ route('client.post.index') }}">
+                        <i class="material-icons">library_books</i>
+                        <span>Post</span>
+                    </a>
+                </li>
+
+                
+
+                 
+
+                     <li class="{{ Request::is('client/settings') ? 'active' : '' }}">
+                        <a href="{{ Auth::user()->role->id == 2 ? route('client.settings') : route('client.settings')}}">
+                        <i class="material-icons">settings</i>
+                        <span>Settings</span>
+                        </a>
+                    </li>
 
                  
                 

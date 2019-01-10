@@ -45,7 +45,7 @@
                     <div class="card">
                         <div class="header bg-cyan">
                             <h2>
-                                Categoryies
+                                Categories
                             </h2>
                         </div>
                         <div class="body">

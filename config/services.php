@@ -40,4 +40,10 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => 'facebook-app-id',         // Your GitHub Client ID
+        'client_secret' => 'facebook-app-sercret', // Your GitHub Client Secret
+        'redirect' => 'http://your-callback-url',
+    ],
+
 ];

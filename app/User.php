@@ -31,9 +31,26 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Role');
     }
+
+    public function appinfo()
+    {
+        return $this->belongsTo('App\Appinfo');
+    }
+
+    public function jobtypecategory()
+    {
+        return $this->belongsTo('App\Jobtypecategory');
+    }
+    
+
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany('App\Job');
     }
 
     public function favorite_posts()

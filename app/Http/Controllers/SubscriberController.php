@@ -23,8 +23,9 @@ class SubscriberController extends Controller
             $subscriber = new Subscriber();
             $subscriber->email = $request->email;
             $subscriber->save();
-            Toastr::success('You Successfully added to our subscriber list :)','Success');
+            Toastr::success('Subscribes Successfully.','Success',["positionClass" => "toast-top-right"]);
             return redirect()->back();
+         
         }
 
 
